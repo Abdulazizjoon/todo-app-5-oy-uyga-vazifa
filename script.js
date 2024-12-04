@@ -25,15 +25,15 @@ document.addEventListener("DOMContentLoaded", function () {
   removebtn.forEach(function (value) {
     value.addEventListener("click", function () {
       let chekked = confirm("siz rostanham taskni ochirmoqchimisiz");
-      let id = this.parentNode.getAttribute("data-id");
-      console.log(id);
+      let id = this.parentNode.getAttribute("data-id")
+      // console.log(id);
 
       if (chekked && id) {
-        let users = getData()
-        users.filter  (function(value) {
-          return value.id!=id
-        })
-        localStorage.setItem('users',JSON.stringify(users))
+        let users = getData();
+        users=users.filter(function (value) {
+          return value.id != id;
+        });
+        localStorage.setItem("users", JSON.stringify(users));
         this.parentNode.remove();
       }
     });

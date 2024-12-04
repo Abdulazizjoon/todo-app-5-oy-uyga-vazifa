@@ -1,9 +1,11 @@
 function card(data) {
-    return `
-        <div class="card data-id="${data.id}">
+  // console.log(data.id.toString());
+  
+  return `
+        <div class="card" data-id="${data.id}">
           <p class="card_p">${data.name}</p>
           <button class="btntrash" type="button">
-            <i class="fa-solid fa-trash"></i>
+            <i class="fa-solid fa-trash" style="pointer-events: none;"></i>
           </button>
         </div>
     `;
@@ -11,9 +13,9 @@ function card(data) {
 function getData() {
   let data = [];
   if (localStorage.getItem("users")) {
-    data = JSON.parse(localStorage.getItem("users")); 
+    data = JSON.parse(localStorage.getItem("users"));
   }
-  return data; 
+  return data;
 }
 
-export{card,getData}
+export { card, getData };
