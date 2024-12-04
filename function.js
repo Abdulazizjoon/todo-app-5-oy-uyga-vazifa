@@ -1,6 +1,6 @@
 function card(data) {
     return `
-        <div class="card data-id="${data.id}"">
+        <div class="card data-id="${data.id}">
           <p class="card_p">${data.name}</p>
           <button class="btntrash" type="button">
             <i class="fa-solid fa-trash"></i>
