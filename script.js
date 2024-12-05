@@ -13,6 +13,23 @@ btn.addEventListener("click", function () {
   users.push(user);
   localStorage.setItem("users", JSON.stringify(users));
   input.value = "";
+  let removebtn = document.querySelectorAll(".btntrash");
+  removebtn.forEach(function (value) {
+    value.addEventListener("click", function () {
+      let chekked = confirm("siz rostanham taskni ochirmoqchimisiz");
+      let id = this.parentNode.getAttribute("data-id");
+      // console.log(id);
+
+      if (chekked && id) {
+        let users = getData();
+        users = users.filter(function (value) {
+          return value.id != id;
+        });
+        localStorage.setItem("users", JSON.stringify(users));
+        this.parentNode.remove();
+      }
+    });
+  });
 });
 document.addEventListener("DOMContentLoaded", function () {
   let user = getData();
@@ -21,23 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
     wraper.innerHTML += cards;
   });
 
-  let removebtn = document.querySelectorAll(".btntrash");
-  removebtn.forEach(function (value) {
-    value.addEventListener("click", function () {
-      let chekked = confirm("siz rostanham taskni ochirmoqchimisiz");
-      let id = this.parentNode.getAttribute("data-id")
-      // console.log(id);
-
-      if (chekked && id) {
-        let users = getData();
-        users=users.filter(function (value) {
-          return value.id != id;
-        });
-        localStorage.setItem("users", JSON.stringify(users));
-        this.parentNode.remove();
-      }
-    });
-  });
+  
   // let res = wraper.querySelectorAll(".card").length;
   // function card(data) {
   //   return `
@@ -45,4 +46,12 @@ document.addEventListener("DOMContentLoaded", function () {
   //   `;
   // }
   // console.log(card(res));
+});
+
+remove.addEventListener("click", function () {
+  let confirmed = confirm("Rostdan ham barcha tasklarni o'chirishni xohlaysizmi?");
+  if (confirmed) {
+    localStorage.removeItem("users");
+    wraper.innerHTML = "";
+  }
 });
